@@ -1,9 +1,11 @@
 class SessionsController < ApplicationController
     def new
         @user = User.new
+        # login form
     end
 
     def create
+        # login authentication
     end
 
     def destroy
