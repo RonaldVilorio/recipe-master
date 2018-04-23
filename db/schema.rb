@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_20_202526) do
+ActiveRecord::Schema.define(version: 2018_04_22_175331) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer "stars"
+    t.string "comment"
+    t.string "user"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
