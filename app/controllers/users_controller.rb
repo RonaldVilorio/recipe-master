@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
-    
+    before_action :set_user, only: [:show, :edit, :update, :destroy]
+
     def new
-        # binding.pry
         @user = User.new
     end
     def create
-        binding.pry
+    
         @user = User.new(user_params)
         if @user.save
             session[:user_id] = @user.id
+            redirect_to user_path
         else
             render :new
         end
