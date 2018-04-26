@@ -10,3 +10,10 @@
       <%= f.submit "Log In" %>
 
   <% end %>
+  <h1>Login in with facebook</h1>
+  <% if session[:user_id] %>
+  <h1><%= @user.name %></h1>
+  <h2>Email: <%= @user.email %></h2>
+<% else %>
+  <%= link_to('Log in with Facebook!', '/auth/facebook') %>
+<% end %>

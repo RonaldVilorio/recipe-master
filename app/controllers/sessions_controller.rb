@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
         end
     end
     def omnicreate
+        binding.pry
 
     end
 
