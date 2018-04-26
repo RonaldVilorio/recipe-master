@@ -13,12 +13,18 @@ class SessionsController < ApplicationController
             redirect_to login_path
         end
     end
+    def omnicreate
+
+    end
 
     def destroy
        session.delete :user_id
        redirect_to root_url
     end
     private
+    def auth
+        request.env['omniauth.auth']
+    end
     def session_params
         params.require(:user).permit(:name,:password)
     end
