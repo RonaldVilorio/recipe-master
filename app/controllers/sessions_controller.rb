@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
     end
 
     def create
-        # login authentication
         @user = User.find_by(name: session_params[:name])
         if @user && @user.authenticate(session_params[:password])
             session[:user_id] = @user.id
@@ -14,11 +13,12 @@ class SessionsController < ApplicationController
         end
     end
     def omnicreate
-        binding.pry
-        if auth
-            user = User.find_or_create_by_omniauth(auth_hash)
-            session[:user_id] = user.id
-            redirect_to user_path(user)
+    
+        if auth_hash
+            @user = User.find_or_create_by_omniauth(auth_hash)
+            
+            session[:user_id] = @user.id
+            redirect_to user_path(@user)
         end
         
     end
