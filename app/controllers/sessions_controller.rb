@@ -15,7 +15,12 @@ class SessionsController < ApplicationController
     end
     def omnicreate
         binding.pry
-
+        if auth
+            user = User.find_or_create_by_omniauth(auth_hash)
+            session[:user_id] = user.id
+            redirect_to user_path(user)
+        end
+        
     end
 
     def destroy
@@ -23,7 +28,7 @@ class SessionsController < ApplicationController
        redirect_to root_url
     end
     private
-    def auth
+    def auth_hash
         request.env['omniauth.auth']
     end
     def session_params
