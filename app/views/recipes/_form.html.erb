@@ -1,0 +1,19 @@
+
+# select box, and option to add an ingredient
+
+# input field for name of recipe
+# input box for recipe content(steps)
+<%= form_for @recipe do |f| %>
+   <%=f.label :name%>
+   <%=f.text_field :name%>
+   <br>
+        <%=f.fields_for :ingredients do |ing|%>
+            # select box or choose ing
+        <%end%>
+    <br>
+    <%=f.label :content%>
+    <%=f.text_box :content%>
+    <br>
+    <%=f.submit%>
+
+<%end%>

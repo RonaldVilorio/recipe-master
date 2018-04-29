@@ -22,7 +22,7 @@ class RecipesController < ApplicationController
         @recipe = Recipe.find(params[:id])
     end
     def recipe_params
-        params.require(:recipe).permit()
+        params.require(:recipe).permit(:content,:name)
     end
 
 end
