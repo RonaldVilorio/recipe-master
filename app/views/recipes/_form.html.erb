@@ -9,17 +9,18 @@
             <%= ing.label :name, "Pick your ingredients or make up to 5 that you could not find"%>
             <br>
             <%= ing.text_field :name%>
-            <br>
-            <br>
-            <%= ing.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name%>
-            <br>
-            
         <%end%>
     <br>
     <br>
+
+    <%=f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name%>
+    
+    <br>
+    <br>
+
     <%=f.label :content, "Tell us the steps to follow"%>
     <br>
-    <%=f.text_area :content,:size => 200%>
+    <%=f.text_area :content%>
     <br>
     <%=f.submit%>
 

@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
     end
     def new
         @recipe = Recipe.new
-        5.times { ingredient = @recipe.ingredients.build}
+        # 5.times { ingredient = @recipe.recipe_ingredients.build.build_ingredient binding.pry}
     end
     def show 
     end
@@ -22,6 +22,7 @@ class RecipesController < ApplicationController
         @recipe = Recipe.find(params[:id])
     end
     def recipe_params
+        # modify
         params.require(:recipe).permit(:content,:name, ingredients_attributes[
             :name
         ])
