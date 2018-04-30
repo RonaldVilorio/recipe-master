@@ -11,4 +11,4 @@ Ingredient.create(name: "Pork")
 Ingredient.create(name: "Salmon")
 Ingredient.create(name: "Trout")
 Ingredient.create(name: "Rice")
-    
+
