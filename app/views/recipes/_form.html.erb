@@ -9,7 +9,7 @@
             <%= ing.label :name, "Pick your ingredients or make your own"%>
             <br>
             <br>
-            <%= ing.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name,  {:prompt => "Please Select an Ingredient"}, {:multiple => true}%>
+            <%= ing.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name%>
             <br>
             <%=ing.text_field :name%>
             
