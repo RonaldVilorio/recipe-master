@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
     end
     def new
         @recipe = Recipe.new
-        # form, will use partial
+        5.times { ingredient = @recipe.ingredients.build}
     end
     def show 
     end
@@ -22,7 +22,9 @@ class RecipesController < ApplicationController
         @recipe = Recipe.find(params[:id])
     end
     def recipe_params
-        params.require(:recipe).permit(:content,:name)
+        params.require(:recipe).permit(:content,:name, ingredients_attributes[
+            :name
+        ])
     end
 
 end

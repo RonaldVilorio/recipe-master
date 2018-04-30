@@ -6,12 +6,13 @@
    <br>
    <br>
         <%=f.fields_for :ingredients do |ing|%>
-            <%= ing.label :name, "Pick your ingredients or make your own"%>
+            <%= ing.label :name, "Pick your ingredients or make up to 5 that you could not find"%>
+            <br>
+            <%= ing.text_field :name%>
             <br>
             <br>
             <%= ing.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name%>
             <br>
-            <%=ing.text_field :name%>
             
         <%end%>
     <br>
@@ -23,3 +24,4 @@
     <%=f.submit%>
 
 <%end%>
+
