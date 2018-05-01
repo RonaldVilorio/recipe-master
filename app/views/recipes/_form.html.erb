@@ -5,11 +5,12 @@
    <%=f.text_field :name%>
    <br>
    <br>
-        <%=f.fields_for :ingredients do |ing|%>
-            <%= ing.label :name, "Pick your ingredients or make up to 5 that you could not find"%>
-            <br>
-            <%= ing.text_field :name%>
-        <%end%>
+
+     <%=f.fields_for :ingredients do |ing|%>
+        <%= ing.label :name, "Enter ingredient name"%>
+        <%= ing.text_field :name%>
+     <%end%>
+     
     <br>
     <br>
 

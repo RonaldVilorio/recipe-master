@@ -5,7 +5,10 @@ class RecipesController < ApplicationController
     end
     def new
         @recipe = Recipe.new
-        # 5.times { ingredient = @recipe.recipe_ingredients.build.build_ingredient binding.pry}
+        5.times do
+            @recipe.ingredients.build
+        end
+
     end
     def show 
     end
