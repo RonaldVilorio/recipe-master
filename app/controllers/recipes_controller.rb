@@ -10,6 +10,9 @@ class RecipesController < ApplicationController
         end
 
     end
+    def create
+        binding.pry
+    end
     def show 
     end
     def edit
@@ -26,7 +29,7 @@ class RecipesController < ApplicationController
     end
     def recipe_params
         # modify
-        params.require(:recipe).permit(:content,:name, ingredients_attributes[
+        params.require(:recipe).permit(:content,:name,ingredient_ids[],ingredients_attributes[
             :name
         ])
     end

@@ -4,7 +4,6 @@
    <br>
    <%=f.text_field :name%>
    <br>
-   <br>
    <p>Choose pre existing ingredient</p>
     <%=f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name%>
     
@@ -18,8 +17,6 @@
      
     <br>
     <br>
-
-    
 
     <%=f.label :content, "Tell us the steps to follow"%>
     <br>
