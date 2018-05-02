@@ -4,14 +4,14 @@ class RecipesController < ApplicationController
         @recipes = Recipe.all
     end
     def new
-        @recipe = Recipe.new
-        5.times do
-            @recipe.ingredients.build
-        end
+        binding.pry
+        @recipe = Recipe.new(user_id: params[:user_id])
+        build_ingredients
+        
 
     end
     def create
-        binding.pry
+        # binding.pry
     #   raise params.inspect
         @recipe = current_user.recipes.build(recipe_params)
     end
@@ -34,6 +34,13 @@ class RecipesController < ApplicationController
         params.require(:recipe).permit(:content,:name,ingredient_ids[],ingredients_attributes[
             :name
         ])
+        # ingredient_ids will be taken care by ar
+        # ingredients_attributes is handled by a method I created in recipe class
+    end
+    def build_ingredients
+        5.times do
+            @recipe.ingredients.build
+        end
     end
 
 end
