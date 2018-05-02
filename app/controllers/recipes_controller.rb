@@ -4,11 +4,14 @@ class RecipesController < ApplicationController
         @recipes = Recipe.all
     end
     def new
-        binding.pry
+        
         if params[:user_id] && !User.exists?(params[:user_id])
             redirect_to users_path, alert: "User not found"
         else
-            @recipe = Recipe.new(user_id: params[:user_id])
+            binding.pry
+            @recipe = Recipe.new
+            @recipe.user = User.find(id: params[:user_id])
+
             build_ingredients
         end
         
@@ -34,7 +37,7 @@ class RecipesController < ApplicationController
     end
     def recipe_params
         # modify
-        params.require(:recipe).permit(:content,:name,ingredient_ids[],ingredients_attributes[
+        params.require(:recipe).permit(:content,:name,:user_id,ingredient_ids[],ingredients_attributes[
             :name
         ])
         # ingredient_ids will be taken care by active record

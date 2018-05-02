@@ -4,6 +4,7 @@
    <br>
    <%=f.text_field :name%>
    <br>
+   <%= f.hidden_field :user_id %>
    <p>Choose pre existing ingredient</p>
     <%=f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name%>
     
