@@ -12,6 +12,8 @@ class RecipesController < ApplicationController
     end
     def create
         binding.pry
+    #   raise params.inspect
+        @recipe = current_user.recipes.build(recipe_params)
     end
     def show 
     end
