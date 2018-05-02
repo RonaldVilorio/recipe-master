@@ -7,10 +7,9 @@ class Recipe < ApplicationRecord
     # def ingredients_attributes=(ingredients_attributes)
     # ingredients_attributes.each do |i,ingredient_attribute|
     def ingredients_attributes=(ingredients_attributes)
-        raise ingredients_attributes.inspect
         ingredients_attributes.values.each do |ingredient_attribute|
-            if ingredient_attribute != "" && ingredient_attribute != nil
-                self.ingredients << Ingredient.find_or_create_by(name: ingredient_attribute)
+            if ingredient_attribute["name"] != "" && ingredient_attribute["name"] != nil
+                self.ingredients << Ingredient.find_or_create_by(name: ingredient_attribute["name"])
             end
         end
     end
