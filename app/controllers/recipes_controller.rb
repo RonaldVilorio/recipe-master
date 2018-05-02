@@ -5,10 +5,13 @@ class RecipesController < ApplicationController
     end
     def new
         binding.pry
-        @recipe = Recipe.new(user_id: params[:user_id])
-        build_ingredients
+        if params[:user_id] && !User.exists?(params[:user_id])
+            redirect_to users_path, alert: "User not found"
+        else
+            @recipe = Recipe.new(user_id: params[:user_id])
+            build_ingredients
+        end
         
-
     end
     def create
         # binding.pry
@@ -34,7 +37,7 @@ class RecipesController < ApplicationController
         params.require(:recipe).permit(:content,:name,ingredient_ids[],ingredients_attributes[
             :name
         ])
-        # ingredient_ids will be taken care by ar
+        # ingredient_ids will be taken care by active record
         # ingredients_attributes is handled by a method I created in recipe class
     end
     def build_ingredients
