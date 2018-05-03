@@ -1,0 +1,14 @@
+<h1>All recipes</h1>
+<%@recipes.each do |recipe|%>
+    <ol>
+        <li>
+            <h3>Name:</h3>
+             <%=recipe.name%>
+            <h3>Steps</h3>
+             <%=recipe.content%>
+        </li>
+        <hr></hr>
+
+    </ol>
+    
+<%end%>

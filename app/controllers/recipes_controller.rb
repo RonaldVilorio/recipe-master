@@ -1,7 +1,13 @@
 class RecipesController < ApplicationController
     before_action :set_recipe, only: [ :edit, :update, :destroy]
     def index
-        @recipes = Recipe.all
+        
+        if @user = User.find_by(id: params[:user_id])
+            @recipes = @user.recipes
+        else
+            @recipes = Recipe.all
+        end
+
     end
     def new
         
@@ -14,8 +20,7 @@ class RecipesController < ApplicationController
         
     end
     def create
-        # binding.pry
-    #   raise params.inspect
+        
         @recipe = current_user.recipes.build(recipe_params)
         if @recipe.save
             redirect_to recipe_path(@recipe)
@@ -41,7 +46,6 @@ class RecipesController < ApplicationController
         @recipe = Recipe.find(params[:id])
     end
     def recipe_params
-        # modify
         params.require(:recipe).permit(:content,:name,:user_id,ingredient_ids:[],ingredients_attributes:[
             :name
         ])
