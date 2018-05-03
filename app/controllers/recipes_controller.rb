@@ -30,11 +30,17 @@ class RecipesController < ApplicationController
         redirect_if_unauthorized
         set_user
         # or statement just in case user navigates to a recipe that was deleted
-        @recipe = @user.recipes.find_by(id: params[:id]) else redirect_to user_recipes_path(@user) if @recipe.nil?
+        @recipe = @user.recipes.find_by(id: params[:id])
+        if @recipe.nil?
+            redirect_to user_recipes_path(@user)
+        end
+
     end
     def update
         # binding.pry
-        set_user
+        # going to find a way to stop duplicates from coming in
+        # figure out why enter ingredient below is connected to choosing pre existing ingredient
+        @user = User.find_by(id: params[:recipe][:user_id])
         @recipe.update(recipe_params) ? (redirect_to user_recipe_path(@user)) : (render :edit)
     end
     def destroy
