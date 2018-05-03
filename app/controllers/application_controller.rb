@@ -13,5 +13,9 @@ class ApplicationController < ActionController::Base
     def require_logged_in
         redirect_to root_path unless logged_in?
     end
+    def redirect_if_unauthorized
+        unauth_user_access = params[:user_id] && current_user.id != params[:user_id].to_i
+        redirect_to root_path if unauth_user_access
+      end
 
 end

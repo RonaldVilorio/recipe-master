@@ -27,10 +27,13 @@ class RecipesController < ApplicationController
         @recipe = @user.recipes.find_by(id: params[:id])
     end
     def edit
+        redirect_if_unauthorized
+        set_user
     end
     def update
     end
     def destroy
+        redirect_if_unauthorized
         @recipe.destroy
         # Will need to decide where to redirect here
     end
