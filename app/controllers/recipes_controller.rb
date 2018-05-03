@@ -1,13 +1,7 @@
 class RecipesController < ApplicationController
     before_action :set_recipe, only: [ :edit, :update, :destroy]
     def index
-        
-        if @user = User.find_by(id: params[:user_id])
-            @recipes = @user.recipes
-        else
-            @recipes = Recipe.all
-        end
-
+        set_user ? @recipes = @user.recipes : @recipes = Recipe.all
     end
     def new
         
@@ -29,8 +23,7 @@ class RecipesController < ApplicationController
         end
     end
     def show
-        # binding.pry
-        @user = User.find_by(id: params[:user_id])
+        set_user
         @recipe = @user.recipes.find_by(id: params[:id])
     end
     def edit
@@ -56,6 +49,9 @@ class RecipesController < ApplicationController
         5.times do
             @recipe.ingredients.build
         end
+    end
+    def set_user
+        @user = User.find_by(id: params[:user_id])
     end
 
 end
