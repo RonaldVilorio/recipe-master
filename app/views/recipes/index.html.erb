@@ -4,8 +4,16 @@
         <li>
             <h3>Name:</h3>
              <%=recipe.name%>
+            <h3>Ingredients:</h3>
+             <%recipe.ingredients.each do |ingredient|%>
+                <ul>
+                    <li><%=ingredient.name%></li>
+                </ul>
+             <%end%>
+
             <h3>Steps</h3>
              <%=recipe.content%>
+
         </li>
         <hr></hr>
 
