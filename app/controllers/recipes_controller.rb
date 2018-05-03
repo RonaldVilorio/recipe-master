@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-    before_action :set_recipe, only: [ :edit, :update, :destroy]
+    before_action :set_recipe, only: [ :update, :destroy]
     def index
         set_user ? @recipes = @user.recipes : @recipes = Recipe.all
     end
@@ -29,8 +29,13 @@ class RecipesController < ApplicationController
     def edit
         redirect_if_unauthorized
         set_user
+        # or statement just in case user navigates to a recipe that was deleted
+        @recipe = @user.recipes.find_by(id: params[:id]) else redirect_to user_recipes_path(@user) if @recipe.nil?
     end
     def update
+        # binding.pry
+        set_user
+        @recipe.update(recipe_params) ? (redirect_to user_recipe_path(@user)) : (render :edit)
     end
     def destroy
         redirect_if_unauthorized
