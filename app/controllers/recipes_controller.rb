@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-    before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+    before_action :set_recipe, only: [ :edit, :update, :destroy]
     def index
         @recipes = Recipe.all
     end
@@ -24,7 +24,9 @@ class RecipesController < ApplicationController
         end
     end
     def show
-        binding.pry 
+        # binding.pry
+        @user = User.find_by(id: params[:user_id])
+        @recipe = @user.recipes.find_by(id: params[:id])
     end
     def edit
     end

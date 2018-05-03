@@ -1,0 +1,11 @@
+Hey <strong><%=@user.name%></strong>
+<br>
+<p>Recipe Name:</p>
+<strong><%=@recipe.name%></strong>
+<br>
+<p>Ingredients for this recipe:</p>
+<%@recipe.ingredients.each do |ingredient|%>
+    <li><strong><%=ingredient.name%></strong></li>
+<%end%>
+<p>Steps</p>
+<strong><%=@recipe.content%></strong>
