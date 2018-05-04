@@ -17,7 +17,6 @@ class RecipesController < ApplicationController
         
         @recipe = current_user.recipes.build(recipe_params)
         if @recipe.save
-            biding.pry
             redirect_to recipe_path(@recipe)
         else
             render :new
@@ -31,7 +30,6 @@ class RecipesController < ApplicationController
     def edit
         redirect_if_unauthorized
         set_user
-        # or statement just in case user navigates to a recipe that was deleted
         @recipe = @user.recipes.find_by(id: params[:id])
         if @recipe.nil?
             redirect_to user_recipes_path(@user)
@@ -46,10 +44,8 @@ class RecipesController < ApplicationController
     end
     def destroy
         redirect_if_unauthorized
-        redirect_to user_recipes(user)
         @recipe.destroy
-        
-        # Will need to decide where to redirect here
+        redirect_to user_recipes_path
     end
     private
     def set_recipe
