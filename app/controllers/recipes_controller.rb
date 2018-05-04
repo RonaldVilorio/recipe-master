@@ -34,18 +34,22 @@ class RecipesController < ApplicationController
         if @recipe.nil?
             redirect_to user_recipes_path(@user)
         end
+        build_ingredients
 
     end
     def update
         # binding.pry
         # going to find a way to stop duplicates from coming in
         # figure out why enter ingredient below is connected to choosing pre existing ingredient
+        # binding.pry
         @user = User.find_by(id: params[:recipe][:user_id])
+        @recipe.ingredients.clear
         @recipe.update(recipe_params) ? (redirect_to user_recipe_path(@user)) : (render :edit)
     end
     def destroy
         redirect_if_unauthorized
         @recipe.destroy
+        # redirect_to user_recipes
         # Will need to decide where to redirect here
     end
     private
