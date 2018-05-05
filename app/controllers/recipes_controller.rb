@@ -15,13 +15,14 @@ class RecipesController < ApplicationController
     end
     def create
         @recipe = current_user.recipes.build(recipe_params)
-        if @recipe.save
-            binding.pry
-            # redirect_to recipe_path(@recipe)
-            redirect_to user_recipe_path(current_user)
-        else
-            render :new
-        end
+        @recipe.save ? redirect_to user_recipe_path(current_user) : render :new
+        # if @recipe.save
+        #     binding.pry
+        #     # redirect_to recipe_path(@recipe)
+        #     redirect_to user_recipe_path(current_user)
+        # else
+        #     render :new
+        # end
     end
     def show
         set_user
