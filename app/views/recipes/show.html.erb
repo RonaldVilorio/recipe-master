@@ -1,13 +1,13 @@
-Hey <strong><%=@user.name%></strong>
+Hey <%=@user.name%>
 <br>
-<p>Recipe Name:</p>
-<strong><%=@recipe.name%></strong>
+<h2>Recipe Name:</h2>
+<%=@recipe.name%>
 <br>
-<p>Ingredients for this recipe:</p>
+<h2>Ingredients for this recipe:</h2>
 <%@recipe.ingredients.each do |ingredient|%>
-    <li><strong><%=ingredient.name%></strong></li>
+    <li><%=ingredient.name%></li>
 <%end%>
-<p>Steps</p>
-<strong><%=@recipe.content%></strong>
+<h2>Steps</h2>
+<%=@recipe.content%>
 <br>
 <%= link_to "Delete This Recipe", user_recipe_path(@recipe.user,@recipe), method: :delete, data: {confirm: "Are you sure you want to delete #{@recipe.name}"} %>

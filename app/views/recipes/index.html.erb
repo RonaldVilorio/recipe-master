@@ -3,7 +3,7 @@
     <ol>
         <li>
             <h3>Name:</h3>
-             <%=recipe.name%>
+             <%= link_to recipe.name, user_recipe_path(recipe.user,recipe)%>
             <h3>Ingredients:</h3>
              <%recipe.ingredients.each do |ingredient|%>
                 <ul>
