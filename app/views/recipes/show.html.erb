@@ -11,3 +11,15 @@ Hey <%=@user.name%>
 <%=@recipe.content%>
 <br>
 <%= link_to "Delete This Recipe", user_recipe_path(@recipe.user,@recipe), method: :delete, data: {confirm: "Are you sure you want to delete #{@recipe.name}"} %>
+<br>
+<br>
+<%= form_for Rating.new(user_id: @current_user.id,recipe_id: @recipe.id) do |f| %>
+    <%=f.label :comment, "Enter your comment"%>
+    <br>
+    <%=f.text_area :comment, cols: "50", rows: "5"%>
+    <br>
+    <br>
+    <%=f.label :stars, "Choose a rating, 1 lowest and 5 highest"%>
+    <%= f.select :stars, [1,2,3,4,5]%>
+    <%# select down choose rating 1-5, %>
+<%end%>

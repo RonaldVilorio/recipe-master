@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "static#index"
+  resources :ratings, only: [:create]
   resources :recipes, only: [:index,:show,:create]
   resources :ingredients, only: [:index]
   resources :users do
