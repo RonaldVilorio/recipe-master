@@ -2,9 +2,11 @@
 <%@ingredients.each do |ingredient|%>
     <ul>
         <li>
+            <h3>Name:</h3>
             <%=ingredient.name%>
+            <h3>Recipes:</h3>
             <%ingredient.recipes.each do |recipe|%>
-                <%=recipe.name%>
+                <%=recipe.name%>,
             <%end%>
         </li>
         <hr>
