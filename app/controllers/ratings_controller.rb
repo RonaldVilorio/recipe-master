@@ -1,6 +1,6 @@
 class RatingsController < ApplicationController
     def create
-        # binding.pry
+
         @rating = Rating.new(rating_params)
         current_user.ratings << @rating
         @recipe = Recipe.find_by(id: params[:rating][:recipe_id])
@@ -9,7 +9,7 @@ class RatingsController < ApplicationController
         @recipe.save
         current_user.save
         redirect_to user_recipe_path(@user,@recipe)
-        # need to find user and recipe
+        # make sure this is best way of doing this
 
     end
     def rating_params
