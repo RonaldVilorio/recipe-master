@@ -15,7 +15,9 @@
 <br>
 <br>
 <%@recipe.ratings.each do |rating|%>
-    <%=rating.comment%>
+<%# don't feel 100% about finding user in view %>
+    <% @user = User.find_by(id: rating.user_id) %>
+    <%=@user.name%> <%=rating.comment%> <%=rating.stars%>
 <%end%>
 <%= form_for Rating.new do |f| %>
 
