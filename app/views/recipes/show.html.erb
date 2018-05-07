@@ -14,11 +14,17 @@
 <%= link_to "Delete This Recipe", user_recipe_path(@recipe.user,@recipe), method: :delete, data: {confirm: "Are you sure you want to delete #{@recipe.name}"} %>
 <br>
 <br>
+
+
+<h2>Comments</h2>
 <%@recipe.ratings.each do |rating|%>
-<%# don't feel 100% about finding user in view %>
-    <% @user = User.find_by(id: rating.user_id) %>
-    <%=@user.name%> <%=rating.comment%> <%=rating.stars%>
+    <%@user_of_comment = User.find_by(id: rating.user_id)%>
+    <%=@user_of_comment.name%> <%=rating.comment%> <%=rating.stars%><br><br>
 <%end%>
+<br>
+
+
+
 <%= form_for Rating.new do |f| %>
 
     <%=f.hidden_field :user_id, :value => @user.id%>
@@ -34,3 +40,4 @@
     <br>
     <%=f.submit "Submit Rating and Comment"%>
 <%end%>
+
