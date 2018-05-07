@@ -15,13 +15,27 @@
 <br>
 <br>
 
+<%# might need to move this logic out of here %>
+<h2>Average Rating<h2>
+
+<%@array = []%>
+<%@recipe.ratings.each do |rating|%>
+    <%@array << rating.stars%>
+<%end%>
+<%number_of_stars = @array.count%>
+<%sum_of_all_stars = @array.inject(0){|sum,x| sum + x}%>
+<%=sum_of_all_stars / number_of_stars%>
+
 
 <h2>Comments</h2>
+
+
 <%@recipe.ratings.each do |rating|%>
     <%@user_of_comment = User.find_by(id: rating.user_id)%>
-    <%=@user_of_comment.name%> <%=rating.comment%> <%=rating.stars%><br><br>
+    <%=@user_of_comment.name%> says: <%=rating.comment%> <%=rating.stars%><br><br>
 <%end%>
 <br>
+<%# <<>> %>
 
 
 
