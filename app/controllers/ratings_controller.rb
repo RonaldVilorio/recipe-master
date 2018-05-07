@@ -1,12 +1,18 @@
 class RatingsController < ApplicationController
     def create
-        binding.pry
-        # @rating = Rating.new()
-        # rating = Rating.new(user_id:current_user.id,recipe_id: params[rating][recipe_id],
-        # redirect_to users_recipe_path(params[user_id],params[recipe_id])
-        # will redirect to recipe_show_page
-        # current_user.ratings << rating
-        # recipe.ratings << rating
+        # binding.pry
+        @rating = Rating.new(rating_params)
+        current_user.ratings << @rating
+        @recipe = Recipe.find_by(id: params[:rating][:recipe_id])
+        @recipe.ratings << @rating
+        @user = User.find_by(id: params[:rating][:user_id])
+        @recipe.save
+        current_user.save
+        redirect_to user_recipe_path(@user,@recipe)
+        # need to find user and recipe
 
+    end
+    def rating_params
+        params.require(:rating).permit(:comment,:stars,:recipe_id,user_id: current_user.id)
     end
 end
