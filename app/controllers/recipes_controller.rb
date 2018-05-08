@@ -1,7 +1,11 @@
 class RecipesController < ApplicationController
     before_action :set_recipe, only: [ :update, :destroy]
     def index
+        # division between using a user recipes vs all recipes
+        # will filter both a user @recipes and all recipes
+        binding.pry
         set_user ? @recipes = @user.recipes : @recipes = Recipe.all
+        
     end
     def new
         

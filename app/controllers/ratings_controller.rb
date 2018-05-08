@@ -10,7 +10,7 @@ class RatingsController < ApplicationController
         @recipe_show.save
         current_user.save
         redirect_to user_recipe_path(@user,@recipe_show)
-        # make sure this is best way of doing this
+        # refactor
 
     end
     def rating_params
