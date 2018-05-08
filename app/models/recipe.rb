@@ -10,6 +10,14 @@ class Recipe < ApplicationRecord
             end
         end
     end
+
+    def self.highest_rated_recipes
+        self.joins(:ratings).where(ratings.highest_stars: true)
+    end
+    def self.lowest_rated_recipes
+        self.joins(:ratings).where(ratings.lowest_stars: true)
+    end
+    
     
 end
     
