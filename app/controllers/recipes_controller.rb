@@ -3,8 +3,22 @@ class RecipesController < ApplicationController
     def index
         # division between using a user recipes vs all recipes
         # will filter both a user @recipes and all recipes
-        binding.pry
-        set_user ? @recipes = @user.recipes : @recipes = Recipe.all
+        # set_user ? @recipes = @user.recipes : @recipes = Recipe.all
+
+        if set_user
+            @recipes = @user.recipes
+        end
+
+        if !params[:rating].blank?
+            if params[:rating] == 'highest_rated'
+                @recipes = Recipe.highest_rated_recipes
+            elsif params[:rating] == 'lowest_rated'
+                @recipes = Recipe.lowest_rated_recipes
+            else
+                @recipes = Recipe.all
+            end
+        end
+
         
     end
     def new
