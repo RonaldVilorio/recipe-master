@@ -8,19 +8,7 @@
         <li>
             <h3>Name:</h3>
              <%= link_to recipe.name, user_recipe_path(recipe.user,recipe)%>
-            <h3>Ingredients:</h3>
-             <%recipe.ingredients.each do |ingredient|%>
-                <ul>
-                    <li><%=ingredient.name%></li>
-                </ul>
-             <%end%>
-
-            <h3>Steps</h3>
-             <%=recipe.content%>
-
         </li>
-        <hr></hr>
-
+        <hr>
     </ol>
-    
 <%end%>

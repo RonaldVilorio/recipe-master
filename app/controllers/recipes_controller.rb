@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
         # will filter both a user @recipes and all recipes
         # set_user ? @recipes = @user.recipes : @recipes = Recipe.all
         # need to filter by each recipe overall_stars
-        # hide filter option from user
+       
 
         if set_user
             @recipes = @user.recipes
@@ -14,6 +14,7 @@ class RecipesController < ApplicationController
         if !params[:rating].blank?
             if params[:rating] == 'highest_rated'
                 @recipes = Recipe.highest_rated_recipes
+                
             elsif params[:rating] == 'lowest_rated'
                 @recipes = Recipe.lowest_rated_recipes
             end
