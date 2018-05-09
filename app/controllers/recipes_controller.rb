@@ -1,12 +1,15 @@
 class RecipesController < ApplicationController
     before_action :set_recipe, only: [ :update, :destroy]
     def index
+        
         # division between using a user recipes vs all recipes
         # will filter only all recipes
         # need to filter by each recipe overall_stars
        
         if set_user
             @recipes = @user.recipes
+        else
+            @recipes = Recipe.all
         end
 
         if !params[:rating].blank?
@@ -15,12 +18,9 @@ class RecipesController < ApplicationController
                 
             elsif params[:rating] == 'lowest_rated'
                 @recipes = Recipe.lowest_rated_recipes
-            end
-        else
-            @recipes = Recipe.all
+            end     
         end
 
-        
     end
     def new
         
