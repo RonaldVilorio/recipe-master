@@ -7,6 +7,4 @@ module ApplicationHelper
         array.inject(0){|sum,x| sum + x} / array.count
     end
    
-    #  html_safe
-    
 end

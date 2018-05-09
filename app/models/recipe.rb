@@ -13,5 +13,6 @@ class Recipe < ApplicationRecord
     scope :highest_rated_recipes, -> {self.joins(:ratings).where('ratings.stars >= ? ',3)}
     scope :lowest_rated_recipes, -> {self.joins(:ratings).where('ratings.stars <= ?', 2)}
     
+    
 end
     

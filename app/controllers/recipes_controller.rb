@@ -2,11 +2,9 @@ class RecipesController < ApplicationController
     before_action :set_recipe, only: [ :update, :destroy]
     def index
         # division between using a user recipes vs all recipes
-        # will filter both a user @recipes and all recipes
-        # set_user ? @recipes = @user.recipes : @recipes = Recipe.all
+        # will filter only all recipes
         # need to filter by each recipe overall_stars
        
-
         if set_user
             @recipes = @user.recipes
         end
@@ -46,6 +44,7 @@ class RecipesController < ApplicationController
     def show
         set_user
         @recipe = @user.recipes.find_by(id: params[:id])
+        @ratings = @recipe.ratings
     end
     def edit
         redirect_if_unauthorized

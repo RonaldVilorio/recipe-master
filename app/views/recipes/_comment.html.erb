@@ -1,5 +1,0 @@
-
- <%@recipe.ratings.each do |rating|%>
-    <%@user_of_comment = User.find_by(id: rating.user_id)%>
-    <%=@user_of_comment.name%> says: <%=rating.comment%> <%=rating.stars%><br><br>
- <%end%>
