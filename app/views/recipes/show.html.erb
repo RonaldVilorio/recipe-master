@@ -17,35 +17,11 @@
  method: :delete, data: {confirm: "Are you sure you want to delete #{@recipe.name}"}%><br>
 <%end%>
 
-<%# move this logic out of here %>
-
 <h2>Average Rating<h2>
 <%=show_average(@recipe)%>
 
 <h2>Comments</h2>
-
-<%=show_comments(@recipe)%>
-<%@recipe.ratings.each do |rating|%>
-    <%@user_of_comment = User.find_by(id: rating.user_id)%>
-    <%=@user_of_comment.name%> says: <%=rating.comment%> <%=rating.stars%><br><br>
-<%end%>
+<%= render partial: 'comment', locals: {recipe: @recipe}%>
 <br>
-<%# <<>> %>
 
-
-<%= form_for Rating.new do |f| %>
-
-    <%=f.hidden_field :user_id, :value => @user.id%>
-    <%=f.hidden_field :recipe_id, :value => @recipe.id%>
-    
-    <%=f.label :comment, "Enter your comment"%>
-    <br>
-    <%=f.text_area :comment, cols: "50", rows: "5"%>
-    <br>
-    <br>
-    <%=f.label :stars, "Choose a rating, 1 lowest and 5 highest"%>
-    <%= f.select :stars, [1,2,3,4,5]%>
-    <br>
-    <%=f.submit "Submit Rating and Comment"%>
-<%end%>
-
+<%=render partial: 'rating'%>
