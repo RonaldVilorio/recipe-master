@@ -1,29 +1,30 @@
 
-<%= form_for recipe do |f| %>
-   <%=f.label :name, "Name your recipe"%>
-   <br>
-   <%=f.text_field :name%>
-   <br>
-   <%= f.hidden_field :user_id %>
-   <p>Choose pre existing ingredient</p>
-    <%=f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name%>
-    
-    <br>
-    <br>
-    <p>Enter the name of Ingredient below</p>
-     <%=f.fields_for :ingredients do |ing|%>
-        <%= ing.label :name%>
-        <%= ing.text_field :name%>
-     <%end%>
-     
-    <br>
-    <br>
+<%= form_for @recipe do |f| %>
+    <%= render partial: "layouts/errors", locals: { object: @recipe } %>
+        <%=f.label :name, "Name your recipe"%>
+        <br>
+        <%=f.text_field :name%>
+        <br>
+        <%= f.hidden_field :user_id %>
+        <p>Choose pre existing ingredient</p>
+            <%=f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name%>
+            
+            <br>
+            <br>
+            <p>Enter the name of Ingredient below</p>
+            <%=f.fields_for :ingredients do |ing|%>
+                <%= ing.label :name%>
+                <%= ing.text_field :name%>
+            <%end%>
+            
+            <br>
+            <br>
 
-    <%=f.label :content, "Tell us the steps to follow"%>
-    <br>
-    <%=f.text_area :content%>
-    <br>
-    <%=f.submit%>
+            <%=f.label :content, "Tell us the steps to follow"%>
+            <br>
+            <%=f.text_area :content%>
+            <br>
+            <%=f.submit%>
 
 <%end%>
 
