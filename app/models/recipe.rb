@@ -11,13 +11,17 @@ class Recipe < ApplicationRecord
             end
         end
     end
-    scope :highest_rated_recipes, -> {joins(:ratings).where('ratings.average(stars) >= ?', 3)}
+    # scope :highest_rated_recipes, -> {joins(:ratings).where('ratings.average(stars) >= ?', 3)}
 
+    # def self.highest_rated_recipes
+    #     self.all.each do
 
+    #     self.all.find_all do |recipe|
+    #         binding.pry
+    #         recipe.ratings
+    #     end
+    # end
 
-
-
-    scope :lowest_rated_recipes, -> {self.joins(:ratings).where('ratings.stars <= ?', 2).distinct}
     
 end
     

@@ -1,15 +1,16 @@
 <h1>All recipes</h1>
 <%= form_tag("/recipes", method: "get") do %>
-    <%= select_tag "rating", options_for_select(["highest_rated", "lowest_rated"]), include_blank: true %>
+    <%= select_tag "rating", options_for_select(["newest"]), include_blank: true %>
     <%= submit_tag "Filter" %>
   <% end %>
-<%@recipes.each do |recipe|%>
-<%# fix display of this %>
-    <ol>
-        <li>
-            <h3>Name:</h3>
-             <%= link_to recipe.name, user_recipe_path(recipe.user,recipe)%>
-        </li>
-        <hr>
-    </ol>
-<%end%>
+
+<ol>
+    <%@recipes.each do |recipe|%>
+    <li>
+        <h3>Name:</h3>
+        <%= link_to recipe.name, user_recipe_path(recipe.user,recipe)%>
+    </li>
+    <hr>
+
+    <%end%>
+</ol>

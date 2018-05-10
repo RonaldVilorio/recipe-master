@@ -1,8 +1,11 @@
 <%=@user.name.capitalize%>'s Recipe
 <br>
+
 <h2>Recipe Name:</h2>
 <%=@recipe.name%>
 <br>
+
+
 <h2>Ingredients for this recipe:</h2>
 <%@recipe.ingredients.each do |ingredient|%>
     <li><%=ingredient.name%></li>
@@ -11,9 +14,10 @@
 <%=@recipe.content%>
 <br>
 <br>
+
 <%if @current_user.id == @user.id%>
     <%= link_to "Delete This Recipe", user_recipe_path(@recipe.user,@recipe),
- method: :delete, data: {confirm: "Are you sure you want to delete #{@recipe.name}"}%><br>
+    method: :delete, data: {confirm: "Are you sure you want to delete #{@recipe.name}"}%><br>
 <%end%>
 
 <h2>Average Rating<h2>
