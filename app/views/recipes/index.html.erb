@@ -1,8 +1,8 @@
 <h1>All recipes</h1>
 <%= form_tag("/recipes", method: "get") do %>
-    <%= select_tag "rating", options_for_select(["newest"]), include_blank: true %>
-    <%= submit_tag "Filter" %>
-  <% end %>
+    <%= select_tag "rating", options_for_select(["newest","oldest"]), include_blank: true %>
+    <%= submit_tag "Sort" %>
+<% end %>
 
 <ol>
     <%@recipes.each do |recipe|%>

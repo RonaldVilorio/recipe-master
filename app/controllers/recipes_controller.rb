@@ -12,12 +12,11 @@ class RecipesController < ApplicationController
         end
 
         if !params[:rating].blank?
-            if params[:rating] == 'highest_rated'
-                @recipes = Recipe.highest_rated_recipes
-                
-            elsif params[:rating] == 'lowest_rated'
-                @recipes = Recipe.lowest_rated_recipes
-            end     
+            if params[:rating] == 'newest'
+                @recipes = Recipe.newest
+            elsif params[:rating] == 'oldest'
+                @recipes = Recipe.oldest
+            end
         end
 
     end

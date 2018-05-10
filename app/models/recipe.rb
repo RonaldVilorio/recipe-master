@@ -11,17 +11,8 @@ class Recipe < ApplicationRecord
             end
         end
     end
-    # scope :highest_rated_recipes, -> {joins(:ratings).where('ratings.average(stars) >= ?', 3)}
-
-    # def self.highest_rated_recipes
-    #     self.all.each do
-
-    #     self.all.find_all do |recipe|
-    #         binding.pry
-    #         recipe.ratings
-    #     end
-    # end
-
-    
+    scope :newest, -> {order('created_at ASC')}
+    scope :oldest, -> {order('created_at DESC')}
+        
 end
     
