@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :ratings, only: [:create]
   resources :recipes, only: [:index,:show,:create]
   resources :ingredients, only: [:index]
-  resources :users do
+  resources :users, only: [:new,:create,:show] do
     resources :recipes, only: [:index, :show, :new, :edit, :destroy]
   end
   get '/signup', to: 'users#new'
