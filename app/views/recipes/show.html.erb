@@ -23,8 +23,10 @@
     <%= link_to "Edit This Recipe", edit_user_recipe_path(@recipe.user, @recipe)%>
 <%end%>
 
-<h2>Average Rating<h2>
-<%=show_average(@recipe)%>
+<%if !@recipe.ratings.empty?%>
+    <h2>Average Rating<h2>
+    <%= show_average(@recipe)%>
+<%end%>
 
 <h2>Comments</h2>
 <%=render partial: 'rating',collection: @ratings%>

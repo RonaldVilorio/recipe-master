@@ -54,7 +54,7 @@ class RecipesController < ApplicationController
     def update
         @user = User.find_by(id: params[:recipe][:user_id])
         @recipe.ingredients.clear
-        @recipe.update(recipe_params) ? (redirect_to user_recipe_path(@user)) : (render :edit)
+        @recipe.update(recipe_params) ? (redirect_to user_recipes_path(@user)) : (render :edit)
     end
     def destroy
         redirect_if_unauthorized
