@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     before_action :current_user
     before_action :require_logged_in, except: [:new, :create, :omnicreate, :index]
+    # helper used to use method in navigation partial
+    helper_method :current_user, :logged_in?
     
     
     def current_user

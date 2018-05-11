@@ -5,15 +5,16 @@
 <%=@recipe.name%>
 <br>
 
-
 <h2>Ingredients for this recipe:</h2>
 <%@recipe.ingredients.each do |ingredient|%>
     <li><%=ingredient.name%></li>
 <%end%>
+
 <h2>Steps</h2>
 <%=@recipe.content%>
 <br>
 <br>
+
 
 <%if @current_user.id == @user.id%>
     <%= link_to "Delete This Recipe", user_recipe_path(@recipe.user,@recipe),
@@ -24,7 +25,6 @@
 <%=show_average(@recipe)%>
 
 <h2>Comments</h2>
-
 <%=render partial: 'rating',collection: @ratings%>
 
 <br>
