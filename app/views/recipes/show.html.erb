@@ -19,6 +19,8 @@
 <%if @current_user.id == @user.id%>
     <%= link_to "Delete This Recipe", user_recipe_path(@recipe.user,@recipe),
     method: :delete, data: {confirm: "Are you sure you want to delete #{@recipe.name}"}%><br>
+
+    <%= link_to "Edit This Recipe", edit_user_recipe_path(@recipe.user, @recipe)%>
 <%end%>
 
 <h2>Average Rating<h2>

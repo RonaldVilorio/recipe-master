@@ -1,10 +1,7 @@
 class RecipesController < ApplicationController
     before_action :set_recipe, only: [ :update, :destroy]
     def index
-        # division between using a user recipes vs all recipes
-        # will filter only all recipes
-        # need to filter by each recipe overall_stars
-       
+        # user recipes and all recipes
         if set_user
             @recipes = @user.recipes
         else
