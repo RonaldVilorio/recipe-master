@@ -1,24 +1,11 @@
 # README
+Recipe master is a nice little app to be able to organize all your recipes and and be able to check other user's recipes.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#Installation
+copy link and run git clone pasted link on your editor, bundle install and thin start --ssl to start the server.
 
-Things you may want to cover:
+#Built with
+Rails, Omniauth, SQlite
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
